@@ -1,0 +1,110 @@
+dnplayer Command Line Management Interface
+
+All rights reserved.
+
+Usage:
+
+dnconsole <command> [parameter]
+
+Commands :
+
+quit <--name mnq_name | --index mnq_idx>
+
+quitall
+
+launch <--name mnq_name | --index mnq_idx>
+
+reboot <--name mnq_name | --index mnq_idx>
+
+list
+
+runninglist
+
+isrunning <--name mnq_name | --index mnq_idx>
+
+list2
+
+add [--name <mnq_name>]
+
+copy [--name <mnq_name>] --from <mnq_name | mnq_idx>
+
+remove <--name mnq_name | --index mnq_idx>
+
+rename [--name <mnq_name | --index mnq_idx>] --title <mnq_title>
+
+modify <--name mnq_name | --index mnq_idx>
+
+[--resolution <w,h,dpi>]
+
+[--cpu <1 | 2 | 3 | 4>]
+
+[--memory <256 | 512 | 768 | 1024 | 1536 | 2048 | 4096 | 8192>]
+
+[--manufacturer asus]
+
+[--model ASUS_Z00DUO]
+
+[--pnumber 13800000000]
+
+[--imei <auto | 865166023949731>]
+
+[--imsi <auto | 460000000000000>]
+
+[--simserial <auto | 89860000000000000000>]
+
+[--androidid <auto | 0123456789abcdef>]
+
+[--mac <auto | 000000000000>]
+
+[--autorotate <1 | 0>
+
+[--lockwindow <1 | 0>
+
+installapp <--name mnq_name | --index mnq_idx> --filename <apk_file_name>
+
+installapp <--name mnq_name | --index mnq_idx> --packagename <apk_package_name>
+
+uninstallapp <--name mnq_name | --index mnq_idx> --packagename <apk_package_name>
+
+runapp <--name mnq_name | --index mnq_idx> --packagename <apk_package_name>
+
+killapp <--name mnq_name | --index mnq_idx> --packagename <apk_package_name>
+
+locate <--name mnq_name | --index mnq_idx> --LLI <Lng,Lat>
+
+adb <--name mnq_name | --index mnq_idx> --command <cmd_str>
+
+setprop <--name mnq_name | --index mnq_idx> --key <name> --value <val>
+
+getprop <--name mnq_name | --index mnq_idx> [--key <name>]
+
+downcpu <--name mnq_name | --index mnq_idx> --rate <0~100>
+
+backup <--name mnq_name | --index mnq_idx> --file <filepath>
+
+restore <--name mnq_name | --index mnq_idx> --file <filepath>
+
+action <--name mnq_name | --index mnq_idx> --key <name> --value <val>
+
+scan <--name mnq_name | --index mnq_idx> --file <filepath>
+
+sortWnd
+
+zoomIn
+
+zoomOut
+
+pull <--name mnq_name | --index mnq_idx> --remote <filepath> --local <filepath>
+
+push <--name mnq_name | --index mnq_idx> --remote <filepath> --local <filepath>
+
+backupapp <--name mnq_name | --index mnq_idx> --packagename <apk_package_name> --file <filepath>
+
+restoreapp <--name mnq_name | --index mnq_idx> --packagename <apk_package_name> --file <filepath>
+
+globalsetting [--fps <0~60>] [--audio <1 | 0>] [--fastplay <1 | 0>] [--cleanmode <1 | 0>]
+
+launchex <--name mnq_name | --index mnq_idx> --packagename <apk_package_name>
+————————————————
+版权声明：本文为CSDN博主「leonnew」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/leonnew/article/details/127963092
