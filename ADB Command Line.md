@@ -1,3 +1,4 @@
+```
 adb help // List all comands
 
 == Adb Server
@@ -405,6 +406,4 @@ alias clearapp="adb devices | tail -n +2 | cut -sf 1 | xargs -I X adb -s X shell
 
 
 ===============================================================
-Sources:
-- Internet
-- https://www.automatetheplanet.com/adb-cheat-sheet/
+```
