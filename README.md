@@ -8,3 +8,6 @@ adb shell settings put global device_provisioned 1 & adb shell settings put secu
 
 # Link check proxy requests
 https://api.ipify.org/?format=json
+
+# public api
+https://theboroer.github.io/localtunnel-www/
