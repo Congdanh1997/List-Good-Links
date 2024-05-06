@@ -3,16 +3,22 @@
 # Update packages.
 ```sudo apt-get update```
 # Install nodejs.
-```curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -```
-```sudo apt-get install -y nodejs```
+```
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
 # Install pip, venv, and nginx.
 ```sudo apt-get -y install python3.10-pip python3.10-venv nginx```
 # Create a directory for the app.
-```mkdir hello_world```
-```cd hello_world```
+```
+mkdir hello_world
+cd hello_world
+```
 # Create and activate the virtualenv.
-```python3 -m venv venv```
-```. venv/bin/activate```
+```
+python3 -m venv venv
+. venv/bin/activate
+```
 # Install fastapi, uvicorn, and gunicorn.
 ```pip install fastapi "uvicorn[standard]" gunicorn```
 # Create the main.py file.
@@ -24,8 +30,10 @@
 # Verify that fastapi is running.
 ```curl localhost:8000```
 # Configure nginx.
-```cd /etc/nginx/conf.d/```
-```sudo nano default.conf```
+```
+cd /etc/nginx/conf.d/
+sudo nano default.conf
+```
 # Create a default.conf. Make sure to replace the IP address.
 ```
 server {
