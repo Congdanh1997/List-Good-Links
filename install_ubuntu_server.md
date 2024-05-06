@@ -8,7 +8,7 @@ curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 # Install pip, venv, and nginx.
-```sudo apt-get -y install python3.10-pip python3.10-venv nginx```
+```sudo apt-get -y install python3-pip python3-venv nginx```
 # Create a directory for the app.
 ```
 mkdir hello_world
