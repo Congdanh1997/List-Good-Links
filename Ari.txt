@@ -1,1 +1,1 @@
-Compatibility with previous versions
+Verification without revealing information
