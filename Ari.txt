@@ -1,1 +1,1 @@
-Verification without revealing information
+Bringing off-chain data onto the blockchain
