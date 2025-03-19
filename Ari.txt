@@ -1,1 +1,1 @@
-Securely bringing external data onto the blockchain
+Improving the gas fee structure
