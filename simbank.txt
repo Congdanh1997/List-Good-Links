@@ -1,0 +1,122 @@
+using SimBankManager.Model;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace SimBankManager.Service
+{
+    class MyService
+    {
+        private PortCom BankPort;
+        public async Task ScanSimAsync(int bankPortNo, List<PortCom> portList,
+                            CancellationToken token, Action<string> textCallback)
+        {
+            BankPort = new PortCom(bankPortNo);
+            await Task.Run(() =>
+            {
+                foreach (PortCom port in portList)
+                {
+                    if (token.IsCancellationRequested) break;
+                    textCallback("====>>>> Scan port " + port.Name);
+                    for (int i = 1; i <= port.SimQuan; i++)
+                    {
+                        if (token.IsCancellationRequested) break;
+                        port.SimIndex = i;
+                        SwitchSim(port, BankPort, token);
+                        string result = port.GetImsi(token);
+                        result = string.IsNullOrEmpty(result) ? "---- failed ----" : result;
+                        textCallback(string.Format("{0} -> {1} -> {2} -> {3}",
+                        port.Name, port.ChannelStr, port.SimIndex, result));
+                    }
+                    textCallback("====>>>> Finished port " + port.Name);
+                }
+                try
+                {
+                    BankPort.Close();
+                    foreach (PortCom port in portList) port.Close();
+                }
+                catch { }
+            });
+        }
+
+        public async Task ScanAllAsync(int bankPortNo, List<PortCom> portList,
+                            CancellationToken token, Action<string> textCallback)
+        {
+            BankPort = new PortCom(bankPortNo);
+            await Task.Run(() =>
+            {
+                for (int i = 0; i < portList[0].SimQuan; i++)
+                {
+                    if (token.IsCancellationRequested) break;
+                    textCallback("Äang quÃ©t khay " + (i+1));
+                    SwitchSim(portList, BankPort, token);
+                    foreach (PortCom port in portList)
+                    {
+                        if (token.IsCancellationRequested) break;
+                        string result = port.GetImsi(token);
+                        result = string.IsNullOrEmpty(result) ? "---- failed ----" : result;
+                        textCallback(string.Format("{0} -> {1} -> {2} -> {3}",
+                            port.Name, port.ChannelStr, port.SimIndex, result));
+                    }
+                }
+                try
+                {
+                    BankPort.Close();
+                    foreach (PortCom port in portList) port.Close();
+                }
+                catch { }
+            });
+        }
+
+        public void SwitchSim(List<PortCom> connList, PortCom connBank, CancellationToken token)
+        {
+            string SwitCmd;
+            //string str = string.Empty;
+            foreach (PortCom port in connList)
+            {
+                SwitCmd = "AT+SWIT";
+                port.SimIndex++;
+                // port.ChannelNo = assign[port.getPort()];
+                SwitCmd += port.ChannelNo;
+                SwitCmd += "-";
+                SwitCmd += port.SimIndexStr();
+                // log("=============== " + SwitCmd);
+                connBank.Exec(SwitCmd, 0.1, token);
+            }
+            Thread.Sleep(1000);                // No need???
+            // log ("============ CFUN 0");
+            foreach (PortCom port in connList)
+            {
+                port.Exec("AT+CFUN=0", 0.1, token);
+                //Console.WriteLine(port.getPort() + str);
+            }
+            Thread.Sleep(6000);
+            // log("============ CFUN 1");
+            foreach (PortCom port in connList)
+            {
+                port.Exec("AT+CFUN=1", 0.1, token);
+                //Console.WriteLine(port.getPort() + str);
+            }
+            Thread.Sleep(8000);
+        }
+
+        public void SwitchSim(PortCom modemPort, PortCom bankPort, CancellationToken token)
+        {
+            string SwitCmd = "AT+SWIT";
+            // port.ChannelNo = assign[port.getPort()];
+            SwitCmd += modemPort.ChannelNo;
+            SwitCmd += "-";
+            SwitCmd += modemPort.SimIndexStr();
+            // log("=============== " + SwitCmd);
+            bankPort.Exec(SwitCmd, 0.1, token);
+            Thread.Sleep(1000);                // No need???
+            // log ("============ CFUN 0");
+            modemPort.Exec("AT+CFUN=0", 0.1, token);
+            Thread.Sleep(6000);
+            // log("============ CFUN 1");
+            modemPort.Exec("AT+CFUN=1", 0.1, token);
+            Thread.Sleep(8000);
+        }
+    }
+}
