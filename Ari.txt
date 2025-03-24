@@ -1,1 +1,1 @@
-Zero-knowledge proofs
+Recovering private keys
