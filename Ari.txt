@@ -1,1 +1,1 @@
-DRPoS
+Delegated Random
