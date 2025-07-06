@@ -16,3 +16,7 @@ https://theboroer.github.io/localtunnel-www/
 
 
 ## https://drive.google.com/drive/folders/1pmTLUA82BPJCzNYjhELik7SHSVZbwsuk
+
+
+## Active Office
+`powershell iex (irm https://get.activated.win)`
