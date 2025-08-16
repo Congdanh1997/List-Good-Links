@@ -1,3 +1,5 @@
+# nuitka --onefile  --enable-plugins="pyqt5" --disable-console --windows-icon-from-ico=icon.ico .\Tool_Aviator_v1.8.py
+
 # List-Good-Links
 good link to use
 # Link to transionlate to use API 
