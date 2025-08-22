@@ -1,5 +1,7 @@
 # nuitka --onefile  --enable-plugins="pyqt5" --disable-console --windows-icon-from-ico=icon.ico .\Tool_Aviator_v1.8.py
 
+## ApkPatcher -i /storage/emulated/0/Laftel.apk -a -c /storage/emulated/0/Download/Reqable/reqable-ca.pem
+
 # List-Good-Links
 good link to use
 # Link to transionlate to use API 
