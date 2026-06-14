@@ -24,3 +24,4 @@ https://theboroer.github.io/localtunnel-www/
 
 ## Active Office
 `powershell iex (irm https://get.activated.win)`
+ ## ApkPatcher -i /storage/emulated/0peria.apks -a -f -c /storage/emulated/0/Download/Reqable/reqable-ca.pem
